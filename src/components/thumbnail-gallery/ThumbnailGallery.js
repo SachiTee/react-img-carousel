@@ -2,35 +2,23 @@ import React, { Component } from 'react';
 import './ThumbnailGallery.css';
 import ActiveThumbnailWindow from './ActiveThumbnailWindow';
 import ThumbnailGrid from './ThumbnailGrid';
-// import axios from 'axios';
+import axios from 'axios';
 //import data from '../../data/thumbnail.json'
 export default class ThumbnailGallery extends Component {
-
-    // due to CORS issues locally couldn't test this out
-    // componentDidMount() {
-    //     axios.get('https://github.com/sachitee/react-img-carousel/blob/master/db.json')
-    //     .then(res => {
-    //         console.log(res.data.thumbnails);
-    //     })
-    // }
-
-    componentDidMount(){
-        fetch('https://github.com/sachitee/react-img-carousel/blob/master/db.json', {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-        })
-        .then((response) => {
-          return response.text();
-        })
-        .then((data) => {
-          console.log( JSON.parse(data) )
-          //this.setState{( pic: JSON.parse(data) )}
-        })
+    state = {
+        thumbnails: []
     }
+    componentDidMount() {
+        axios.get('https://my-json-server.typicode.com/sachitee/react-img-carousel/data')
+        .then(res => {
+            this.setState({ thumbnails: res.data.thumbnails })
+        });
+    }
+
+    
     render() {
+        const { thumbnails } = this.state;
+        console.log(this.state.thumbnails)
         return (
             <div>
                 <header className="details">
@@ -39,6 +27,7 @@ export default class ThumbnailGallery extends Component {
                 <div className="thumbnailGalleryStyles">
                     <div className="thumbnail-container">
                         <ActiveThumbnailWindow />
+                        activeThumbnail = {thumbnails[0]}
                         <ThumbnailGrid />
 
                     </div>
