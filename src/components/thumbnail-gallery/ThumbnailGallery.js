@@ -9,16 +9,17 @@ export default class ThumbnailGallery extends Component {
         thumbnails: []
     }
     componentDidMount() {
-        axios.get('https://my-json-server.typicode.com/sachitee/react-img-carousel/data')
+        axios.get('https://my-json-server.typicode.com/sachitee/react-img-carousel/thumbnails')
         .then(res => {
-            this.setState({ thumbnails: res.data.thumbnails })
+            console.log('hi', res.data)
+            this.setState({ thumbnails: res.data })
         });
     }
 
     
     render() {
         const { thumbnails } = this.state;
-        console.log(this.state.thumbnails)
+        console.log(this.state);
         return (
             <div>
                 <header className="details">
