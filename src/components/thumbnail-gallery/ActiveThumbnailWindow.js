@@ -1,10 +1,9 @@
 import React from 'react';
 import './ThumbnailGallery.css';
 const ActiveThumbnailWindow = ({activeThumbnail}) => {
-    console.log(activeThumbnail);
     return (
         <div className="flexed">
-            ActiveThumbnailWindow
+            <img src={activeThumbnail.imgUrl} alt="thumbnail" />
         </div>
     )
 }

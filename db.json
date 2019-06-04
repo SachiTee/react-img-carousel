@@ -2,16 +2,16 @@
     "data": {
         "thumbnails": [
             { 
-                "imgUrl": "http://mindmeldinteractive.com/qassets/thumbnail1.jpg"
+                "imgUrl": "http://mindmeldinteractive.com/qassets/1-large.jpg"
             },
             {
-                "imgUrl": "http://mindmeldinteractive.com/qassets/thumbnail2.jpg"
+                "imgUrl": "http://mindmeldinteractive.com/qassets/2-large.jpg"
             },
             {
-                "imgUrl": "http://mindmeldinteractive.com/qassets/thumbnail3.jpg"
+                "imgUrl": "http://mindmeldinteractive.com/qassets/3-large.jpg"
             },
             {
-                "imgUrl": "http://mindmeldinteractive.com/qassets/thumbnail4.jpg"
+                "imgUrl": "http://mindmeldinteractive.com/qassets/4-large.jpg"
             }
         ]
     }

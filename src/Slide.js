@@ -8,8 +8,11 @@ class Slide extends Component {
             description,
         } = this.props;
         return (
-            <div className="slide"><p className="title">{title}</p><br /><p className="description">{description}</p></div>
-           
+            <div className="slide">
+                <p className="title">{title}</p>
+                <br />
+                <p className="description">{description}</p>
+            </div>
         );
     }
 }

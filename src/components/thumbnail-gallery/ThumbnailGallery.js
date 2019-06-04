@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
-import './ThumbnailGallery.css';
 import ActiveThumbnailWindow from './ActiveThumbnailWindow';
 import ThumbnailGrid from './ThumbnailGrid';
 import axios from 'axios';
-//import data from '../../data/thumbnail.json'
+import './ThumbnailGallery.css';
 export default class ThumbnailGallery extends Component {
     state = {
-        thumbnails: []
+        thumbnails: [],
+        activeIndex: 0
     }
     componentDidMount() {
-        axios.get('https://my-json-server.typicode.com/sachitee/react-img-carousel/thumbnails')
+        axios.get('https://my-json-server.typicode.com/sachitee/react-img-carousel/data')
         .then(res => {
-            console.log('hi', res.data)
-            this.setState({ thumbnails: res.data })
-        });
+            this.setState({ thumbnails: res.data.thumbnails })
+        })
     }
 
+    renderThumbnails = () => { 
+        const { thumbnails, activeIndex } = this.state;
+        if (thumbnails.length) {
+            return (
+                <ActiveThumbnailWindow
+                    activeThumbnail={ thumbnails[activeIndex] }
+                /> 
+            )
+        }
+        return null;
+    }
     
     render() {
         const { thumbnails } = this.state;
-        console.log(this.state);
+
         return (
             <div>
                 <header className="details">
@@ -27,10 +37,8 @@ export default class ThumbnailGallery extends Component {
                 </header>
                 <div className="thumbnailGalleryStyles">
                     <div className="thumbnail-container">
-                        <ActiveThumbnailWindow />
-                        activeThumbnail = {thumbnails[0]}
+                        { this.renderThumbnails() }
                         <ThumbnailGrid />
-
                     </div>
                 </div>
                 <div className="">
