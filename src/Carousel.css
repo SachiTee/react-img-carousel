@@ -1,0 +1,44 @@
+
+.carousel-container {
+    display: flex;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid black;
+}
+
+.carousel-viewport::-webkit-scrollbar {
+    display: none;
+}
+.carousel-nav {
+    position: absolute;
+    width: 35px;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    opacity: .8;
+    border: 1px solid black;
+    font-size: 60px;
+    transition: opacity .2s ease-in-out;
+    z-index: 3;
+}
+.carousel-nav:hover {
+    
+}
+.carousel-nav:focus {
+    border: 1px solid blue;
+}
+.carousel-left-nav {
+    left: 0;
+    border-right: 1px solid rgb(117, 61, 204);
+}
+  
+.carousel-right-nav {
+    right: 0;
+    border-left: 1px solid rgb(117, 61, 204);
+}
+  

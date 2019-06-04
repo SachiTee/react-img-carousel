@@ -1,0 +1,22 @@
+.slide {
+    display: inline-block;
+    vertical-align: top;
+    border-right: 1px solid black;
+    width: 360px;
+    height: 400px;
+    padding: 100px 40px;
+    margin: 0 10px;
+    text-align: left;
+    white-space: normal;   
+}
+.title {
+    font-size:20px;
+    font-weight:bold;
+    margin-top: 150px;
+    text-align: center;
+}
+
+
+.slide:last-child {
+    border-right: none;
+}
