@@ -2,13 +2,22 @@ import React from 'react';
 import './ThumbnailGallery.css';
 import Thumbnail from './Thumbnail';
 
-const ThumbnailGrid = () => {
+const ThumbnailGrid = ({thumbnails, handleClick}) => {
+    console.log(thumbnails);
     return (
         <div className="gallery-grid">
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
-            <Thumbnail />
+            {
+                thumbnails.map((thumbnail, i) => {
+                    return (
+                        <Thumbnail 
+                            key={thumbnail.imgUrl}
+                            imgUrl={thumbnail.imgUrl}
+                            handleClick={handleClick}
+                            index={i}
+                        />
+                    )
+                })
+            }
         </div>
     )
 }

@@ -27,6 +27,11 @@ export default class ThumbnailGallery extends Component {
         return null;
     }
     
+handleClick = (e) => {
+    const newActiveIndex = e.target.getAttribute('data-index')
+    this.setState({ activeIndex: newActiveIndex })
+}
+
     render() {
         const { thumbnails } = this.state;
 
@@ -38,7 +43,10 @@ export default class ThumbnailGallery extends Component {
                 <div className="thumbnailGalleryStyles">
                     <div className="thumbnail-container">
                         { this.renderThumbnails() }
-                        <ThumbnailGrid />
+                        <ThumbnailGrid 
+                            thumbnails={thumbnails}
+                            handleClick={this.handleClick}
+                        />
                     </div>
                 </div>
                 <div className="">
