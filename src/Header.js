@@ -5,7 +5,7 @@ class Header extends Component {
             <React.Fragment>
                 <header className="App-header">
                     <h1>HEADER ONE</h1>
-                    <p class="headline">
+                    <p className="headline">
                         Traveler Travel excursion website darn colorful organized.
                     </p>
                 </header>

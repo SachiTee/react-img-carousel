@@ -2,17 +2,34 @@ import React, { Component } from 'react';
 import './ThumbnailGallery.css';
 import ActiveThumbnailWindow from './ActiveThumbnailWindow';
 import ThumbnailGrid from './ThumbnailGrid';
-import axios from 'axios';
-
+// import axios from 'axios';
+//import data from '../../data/thumbnail.json'
 export default class ThumbnailGallery extends Component {
 
-    componentDidMount() {
-        axios.get('https://react-hacker.danzuzevich.com/thumbnails')
-        .then(res => {
-            console.log(res.data.thumbnails);
+    // due to CORS issues locally couldn't test this out
+    // componentDidMount() {
+    //     axios.get('https://github.com/sachitee/react-img-carousel/blob/master/db.json')
+    //     .then(res => {
+    //         console.log(res.data.thumbnails);
+    //     })
+    // }
+
+    componentDidMount(){
+        fetch('https://github.com/sachitee/react-img-carousel/blob/master/db.json', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => {
+          return response.text();
+        })
+        .then((data) => {
+          console.log( JSON.parse(data) )
+          //this.setState{( pic: JSON.parse(data) )}
         })
     }
-
     render() {
         return (
             <div>

@@ -8,6 +8,7 @@ import Footer from './Footer';
 import ThumbnailGallery from './components/thumbnail-gallery/ThumbnailGallery';
 
 function App() {
+
   return (
     <div className="App">
       <Header />
