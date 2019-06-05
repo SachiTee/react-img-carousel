@@ -1,10 +1,10 @@
 import React from 'react';
-import './Slide.css';
+import './Slide.scss';
 import {Link} from 'react-router-dom';
 const Slide = ({index, img, title, description}) => {
     return (
-        <div className="slide">
-            <Link to={"/detail"} param={{ title: title }}>
+        <div className="slide" data-index={index}>
+            <Link to={"/detail"}>
             <img
                 src={img}
                 alt="travel"

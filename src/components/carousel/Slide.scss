@@ -1,22 +1,19 @@
-.slide {
-    display: inline-block;
-    vertical-align: top;
-    width: 300px;
-    height: 550px;
-    padding: 80px 0;
-    margin: 0 48px;
-    text-align: center;
-    white-space: normal;   
-}
-
-
-
 .title {
     font-size:20px;
     font-weight:bold;
     text-align: center;
 }
 
+.slide {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    height: 600px;
+    padding: 80px 0;
+    margin: 0 48px;
+    text-align: center;
+    white-space: normal;
+}
 
 .slide:last-child {
     border-right: none;

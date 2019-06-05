@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../Header';
+import Header from '../components/sections/Header';
 import Carousel from '../components/carousel/Carousel';
-import Footer from '../Footer';
+import Footer from '../components/sections/Footer';
 
 const MainPage = () => {
     return(

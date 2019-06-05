@@ -47,7 +47,7 @@ class Carousel extends Component {
     handleLeftNav(e) {
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
-        var widthOfSlide = 360;
+        var widthOfSlide = 412;
         var newPos = carouselViewport.scrollLeft - (widthOfSlide * numOfSlidesToScroll);
         var timeToMoveOneSlide = 200;
         var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
@@ -61,7 +61,7 @@ class Carousel extends Component {
     handleRightNav = (e) => {
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
-        var widthOfSlide = 360;
+        var widthOfSlide = 412;
         var newPos = carouselViewport.scrollLeft + (widthOfSlide * numOfSlidesToScroll);
         // var newPos = carouselViewport.scrollLeft + carouselViewport.offsetWidth;
         var timeToMoveOneSlide = 200;
@@ -74,13 +74,61 @@ class Carousel extends Component {
         });
     }
 
-    renderSlides(handleClick) {
-        return data.map((item) => {
+    firstDot = (e) => {
+        const { carouselViewport } = this.refs;
+        var numOfSlidesToScroll = 3;
+        var widthOfSlide = 412;
+        console.log('scrollLeft is', carouselViewport.offsetWidth)
+        console.log('e', e);
+        var newPos = carouselViewport.scrollLeft - carouselViewport.offsetWidth;
+        // var newPos = carouselViewport.scrollLeft - (widthOfSlide * numOfSlidesToScroll);
+        var timeToMoveOneSlide = 200;
+        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
+        scrollTo({
+            element: carouselViewport,
+            to: 0, 
+            duration: totalTimeToMove, 
+            scrollDirection: 'scrollLeft'
+        });
+    }
+    midDot = (e) => {
+        const { carouselViewport } = this.refs;
+        console.log(carouselViewport);
+        var numOfSlidesToScroll = 3;
+        var widthOfSlide = 412;
+        var newPos = carouselViewport.scrollLeft - (widthOfSlide * numOfSlidesToScroll);
+        var timeToMoveOneSlide = 200;
+        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
+        scrollTo({
+            element: carouselViewport,
+            to: newPos, 
+            duration: totalTimeToMove, 
+            scrollDirection: 'scrollLeft'
+        });
+    }
+    lastDot = (e) => {
+        const { carouselViewport } = this.refs;
+        var numOfSlidesToScroll = 3;
+        var widthOfSlide = 412;
+        var newPos = carouselViewport.scrollLeft + (widthOfSlide * numOfSlidesToScroll);
+        var timeToMoveOneSlide = 200;
+        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
+        scrollTo({
+            element: carouselViewport,
+            to: newPos, 
+            duration: totalTimeToMove, 
+            scrollDirection: 'scrollLeft'
+        });
+    }
+    renderSlides() {
+        return data.map((item, i) => {
+            console.log(i);
             return (
                 <Slide
                     img={item.imgUrl}
                     title={item.title}
                     description={item.description}
+                    data-index={i}
                 />
             );
         })
@@ -88,10 +136,11 @@ class Carousel extends Component {
 
     render() {
         return (
+            <div>
             <div className="carousel-container">
                 <button 
                     className="carousel-nav carousel-left-nav"
-                    onClick={this.handleLeftNav}
+                    onClick={ this.handleLeftNav }
                     >
                         <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
@@ -105,6 +154,16 @@ class Carousel extends Component {
                     <FontAwesomeIcon icon={faChevronRight} />
                 </button>
             </div>
+            <nav className="carousel">
+                <input id="carousel-item-1" type="radio" name="carousel-dots" checked />
+                <label htmlFor="carousel-item-1" onClick={ this.firstDot }>Go to item 1</label>
+                <input id="carousel-item-2" type="radio" name="carousel-dots" />
+                <label htmlFor="carousel-item-2" onClick={ this.midDot } >Go to item 2</label>
+                <input id="carousel-item-3" type="radio" name="carousel-dots"/> 
+                <label htmlFor="carousel-item-3" onClick={ this.lastDot } >Go to item 3</label>
+            </nav>
+        </div>
+            
         );
     }
 }

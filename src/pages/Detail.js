@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../Header';
+import Header from '../components/sections/Header';
 import ThumbnailGallery from '../components/thumbnail-gallery/ThumbnailGallery';
-import Footer from '../Footer';
+import Footer from '../components/sections/Footer';
 import './Detail.scss';
 
 const DetailPage = (title) => {
