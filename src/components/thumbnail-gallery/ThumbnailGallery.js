@@ -14,7 +14,6 @@ export default class ThumbnailGallery extends Component {
             this.setState({ thumbnails: res.data.thumbnails })
         })
     }
-
     renderThumbnails = () => { 
         const { thumbnails, activeIndex } = this.state;
         if (thumbnails.length) {
@@ -26,15 +25,12 @@ export default class ThumbnailGallery extends Component {
         }
         return null;
     }
-    
-handleClick = (e) => {
-    const newActiveIndex = e.target.getAttribute('data-index')
-    this.setState({ activeIndex: newActiveIndex })
-}
-
+    handleClick = (e) => {
+        const newActiveIndex = e.target.getAttribute('data-index')
+        this.setState({ activeIndex: newActiveIndex })
+    }
     render() {
         const { thumbnails } = this.state;
-
         return (
             <div>
                 <div className="thumbnailGalleryStyles">
@@ -47,8 +43,6 @@ handleClick = (e) => {
                     </div>
                 </div>
             </div>
-        )
-        
+        ) 
     }
 }
-

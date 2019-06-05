@@ -16,7 +16,8 @@ class Carousel extends Component {
         this.handleLeftNav = this.handleLeftNav.bind(this);
         this.onResize = this.onResize.bind(this);
         this.state = {
-            numOfSlidesToScroll: 2
+            numOfSlidesToScroll: 2,
+            fill: false
         }
     }
     onResize() {
@@ -30,7 +31,6 @@ class Carousel extends Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.onResize);
     }
-
     checkNumOfSlidesToScroll() {
         var numOfSlidesToScroll;
         if (window.innerWidth <= 900 ) {
@@ -44,7 +44,6 @@ class Carousel extends Component {
             });
         }
     }
-
     handleLeftNav(e) {
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
@@ -74,37 +73,50 @@ class Carousel extends Component {
             scrollDirection: 'scrollLeft'
         });
     }
-
     firstDot = (e) => {
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
-        var widthOfSlide = 412;
-        var newPos = carouselViewport.scrollLeft - carouselViewport.offsetWidth;
-        // var newPos = carouselViewport.scrollLeft - (widthOfSlide * numOfSlidesToScroll);
+        var newPos = this.positioning();
         var timeToMoveOneSlide = 200;
         var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
         scrollTo({
             element: carouselViewport,
-            to: 0, 
+            to: newPos, 
             duration: totalTimeToMove, 
             scrollDirection: 'scrollLeft'
         });
     }
     midDot = (e) => {
         const { carouselViewport } = this.refs;
-        var totalTimeToMove = Math.min( (3 * 200), 400 );
+        var numOfSlidesToScroll = 3;
+        var newPos = this.positioning();
+        var timeToMoveOneSlide = 200;
+        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
         scrollTo({
             element: carouselViewport,
-            to: 3, 
+            to: newPos, 
             duration: totalTimeToMove, 
             scrollDirection: 'scrollLeft'
         });
     }
-    lastDot = (e) => {
+    positioning() {
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = 3;
         var widthOfSlide = 412;
-        var newPos = carouselViewport.scrollLeft + (widthOfSlide * numOfSlidesToScroll);
+        let newPos;
+        if(carouselViewport.scrollLeft === 0) {
+            newPos = carouselViewport.scrollLeft + (2 * widthOfSlide * numOfSlidesToScroll);
+        } else if (carouselViewport.scrollLeft === 1236) {
+            newPos = carouselViewport.scrollLeft + (widthOfSlide * numOfSlidesToScroll)
+        } else if (carouselViewport.scrollLeft === 2472) {
+            newPos = carouselViewport.scrollLeft + (widthOfSlide * 0);
+        }
+        return newPos;
+    }
+    lastDot = (e) => {
+        const { carouselViewport } = this.refs;
+        var numOfSlidesToScroll = 3;
+        var newPos = this.positioning();
         var timeToMoveOneSlide = 200;
         var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
         scrollTo({
@@ -116,7 +128,6 @@ class Carousel extends Component {
     }
     renderSlides() {
         return data.map((item, i) => {
-            console.log(i);
             return (
                 <Slide
                     img={item.imgUrl}
@@ -153,7 +164,7 @@ class Carousel extends Component {
                 <label htmlFor="carousel-item-1" onClick={ this.firstDot }>Go to item 1</label>
                 <input id="carousel-item-2" type="radio" name="carousel-dots" />
                 <label htmlFor="carousel-item-2" onClick={ this.midDot } >Go to item 2</label>
-                <input id="carousel-item-3" type="radio" name="carousel-dots"/> 
+                <input id="carousel-item-3" type="radio" name="carousel-dots" /> 
                 <label htmlFor="carousel-item-3" onClick={ this.lastDot } >Go to item 3</label>
             </nav>
         </div>
