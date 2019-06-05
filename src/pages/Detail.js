@@ -3,6 +3,7 @@ import Header from '../components/sections/Header';
 import ThumbnailGallery from '../components/thumbnail-gallery/ThumbnailGallery';
 import Footer from '../components/sections/Footer';
 import './Detail.scss';
+import {Link} from 'react-router-dom';
 
 const DetailPage = (title) => {
     return (
@@ -10,6 +11,7 @@ const DetailPage = (title) => {
             <Header 
                 title="TITLE"
             />  
+            <div class="breadcrumbs"><Link to="/">Home</Link> | <Link to="/detail">Details</Link></div>
             <ThumbnailGallery />  
             <div className="detailDescription">
                 <p>Pretty adventure Travel darn clean blogger modern traveler pretty. 
