@@ -81,6 +81,7 @@ class Carousel extends Component {
         return data.map((place)=>{
             return (
                 <Slide
+                    img={place.imgUrl}
                     title={place.title}
                     description={place.description}
                 />

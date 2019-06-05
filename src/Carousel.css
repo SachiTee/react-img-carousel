@@ -9,6 +9,9 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     border: 1px solid black;
+    max-width: 1197px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .carousel-viewport::-webkit-scrollbar {
@@ -34,10 +37,12 @@
 }
 .carousel-left-nav {
     left: 0;
+    margin-top: 15%;
     border-right: 1px solid rgb(117, 61, 204);
 }
   
 .carousel-right-nav {
+    margin-top: 15%;
     right: 0;
     border-left: 1px solid rgb(117, 61, 204);
 }
