@@ -1,5 +1,5 @@
 import React from 'react';
-import './Slide.scss';
+import './Carousel.scss';
 import {Link} from 'react-router-dom';
 const Slide = ({index, img, title, description}) => {
     return (

@@ -44,6 +44,7 @@ class Carousel extends Component {
             });
         }
     }
+
     handleLeftNav(e) {
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
@@ -76,10 +77,8 @@ class Carousel extends Component {
 
     firstDot = (e) => {
         const { carouselViewport } = this.refs;
-        var numOfSlidesToScroll = 3;
+        var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
         var widthOfSlide = 412;
-        console.log('scrollLeft is', carouselViewport.offsetWidth)
-        console.log('e', e);
         var newPos = carouselViewport.scrollLeft - carouselViewport.offsetWidth;
         // var newPos = carouselViewport.scrollLeft - (widthOfSlide * numOfSlidesToScroll);
         var timeToMoveOneSlide = 200;
@@ -93,15 +92,10 @@ class Carousel extends Component {
     }
     midDot = (e) => {
         const { carouselViewport } = this.refs;
-        console.log(carouselViewport);
-        var numOfSlidesToScroll = 3;
-        var widthOfSlide = 412;
-        var newPos = carouselViewport.scrollLeft - (widthOfSlide * numOfSlidesToScroll);
-        var timeToMoveOneSlide = 200;
-        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
+        var totalTimeToMove = Math.min( (3 * 200), 400 );
         scrollTo({
             element: carouselViewport,
-            to: newPos, 
+            to: 3, 
             duration: totalTimeToMove, 
             scrollDirection: 'scrollLeft'
         });
