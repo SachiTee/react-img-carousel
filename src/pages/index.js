@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Header';
-import Carousel from '../Carousel';
+import Carousel from '../components/carousel/Carousel';
 import Footer from '../Footer';
 
 const MainPage = () => {

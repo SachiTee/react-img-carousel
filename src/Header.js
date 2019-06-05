@@ -1,8 +1,6 @@
 import React from 'react';
 
-
 const Header = ({title, headline}) => {
-   
     return (
         <React.Fragment>
             <header className="App-header">
@@ -13,6 +11,6 @@ const Header = ({title, headline}) => {
             </header>
         </React.Fragment>
     );
-}
+};
 
 export default Header;

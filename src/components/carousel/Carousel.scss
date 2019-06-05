@@ -1,13 +1,12 @@
-
 .carousel-container {
     display: flex;
     width: 100%;
     max-width: 1440px;
 }
-
 .carousel-viewport {
     border: 1px solid black;
     margin: 0 auto;
+    margin-left: 10%;
     max-width: 1197px;
     overflow: hidden;
     overflow-x: auto;
@@ -15,36 +14,33 @@
     white-space: nowrap;
     width: 100%;
 }
-
 .carousel-viewport::-webkit-scrollbar {
     display: none;
 }
 .carousel-nav {
     cursor: pointer;
-    position: absolute;
-    width: 35px;
     padding: 0;
-    outline: none;
+    position: absolute;
     opacity: .8;
+    outline: none;
+    width: 35px;
     font-size: 60px;
     transition: opacity .2s ease-in-out;
     z-index: 3;
 }
 .carousel-nav:hover {
-    
+    color: rgb(38, 113, 114);
 }
 .carousel-nav:focus {
-    border: 1px solid blue;
+    color: rgb(1, 51, 52);
 }
 .carousel-left-nav {
     left: 0;
+    margin-left: 7%;
     margin-top: 15%;
-    border-right: 1px solid rgb(117, 61, 204);
 }
-  
 .carousel-right-nav {
+    margin-right: 7%;
     margin-top: 15%;
     right: 0;
-    border-left: 1px solid rgb(117, 61, 204);
 }
-  

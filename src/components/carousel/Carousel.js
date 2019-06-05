@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './Carousel.scss';
 
-import data from './data/items.json';
+import data from '../../data/items.json';
 
 import Slide from './Slide';
-import scrollTo from './scrollToAnimate';
+import scrollTo from '../../scrollToAnimate';
 
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
