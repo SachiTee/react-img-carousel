@@ -1,16 +1,18 @@
 
 .carousel-container {
     display: flex;
+    width: 100%;
+    max-width: 1440px;
 }
 
 .carousel-viewport {
+    border: 1px solid black;
+    margin: 0 auto;
+    max-width: 1197px;
     overflow: hidden;
     overflow-x: auto;
-    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    border: 1px solid black;
-    max-width: 1197px;
-    margin: 0 auto;
+    white-space: nowrap;
     width: 100%;
 }
 
@@ -18,13 +20,12 @@
     display: none;
 }
 .carousel-nav {
+    cursor: pointer;
     position: absolute;
     width: 35px;
-    cursor: pointer;
     padding: 0;
     outline: none;
     opacity: .8;
-    border: 1px solid black;
     font-size: 60px;
     transition: opacity .2s ease-in-out;
     z-index: 3;

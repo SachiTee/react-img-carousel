@@ -1,5 +1,5 @@
 import React from 'react';
-import './ThumbnailGallery.css';
+import './ThumbnailGallery.scss';
 const Thumbnail = ({imgUrl, handleClick, index}) => {
     return (
         <div className="thumbnail">

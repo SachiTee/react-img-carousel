@@ -6,7 +6,10 @@ import Footer from '../Footer';
 const MainPage = () => {
     return(
         <div className="App">
-            <Header />
+            <Header 
+                title="HEADER ONE"
+                headline="Traveler Travel excursion website darn colorful organized."
+            />
             <Carousel />
             <Footer />
         </div>

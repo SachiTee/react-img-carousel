@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Carousel.css';
+import './Carousel.scss';
 
 import data from './data/items.json';
 
@@ -21,7 +21,6 @@ class Carousel extends Component {
     }
     onResize() {
         this.checkNumOfSlidesToScroll();
-        console.log('resizing');
     }
     componentDidMount() {
         this.checkNumOfSlidesToScroll();
@@ -40,14 +39,12 @@ class Carousel extends Component {
             numOfSlidesToScroll = 2;
         }
         if (this.state.numOfSlidesToScroll !== numOfSlidesToScroll) {
-            console.log('in here', numOfSlidesToScroll);
             this.setState({
                 numOfSlidesToScroll
             });
         }
     }
     handleLeftNav(e) {
-        console.log('left clicked', this);
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
         var widthOfSlide = 360;
@@ -62,7 +59,6 @@ class Carousel extends Component {
         });
     }
     handleRightNav = (e) => {
-        console.log('right clicked', this);
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
         var widthOfSlide = 360;
@@ -77,17 +73,19 @@ class Carousel extends Component {
             scrollDirection: 'scrollLeft'
         });
     }
-    renderSlides() {
-        return data.map((place)=>{
+
+    renderSlides(handleClick) {
+        return data.map((item) => {
             return (
                 <Slide
-                    img={place.imgUrl}
-                    title={place.title}
-                    description={place.description}
+                    img={item.imgUrl}
+                    title={item.title}
+                    description={item.description}
                 />
             );
         })
     }
+
     render() {
         return (
             <div className="carousel-container">

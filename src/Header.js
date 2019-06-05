@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
-class Header extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <header className="App-header">
-                    <h1>HEADER ONE</h1>
-                    <p className="headline">
-                        Traveler Travel excursion website darn colorful organized.
-                    </p>
-                </header>
-            </React.Fragment>
-        );
-    }
+import React from 'react';
+
+
+const Header = ({title, headline}) => {
+   
+    return (
+        <React.Fragment>
+            <header className="App-header">
+                <h1>{title}</h1>
+                <p className="headline">
+                    {headline}
+                </p>
+            </header>
+        </React.Fragment>
+    );
 }
 
 export default Header;

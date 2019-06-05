@@ -1,9 +1,8 @@
 import React from 'react';
-import './ThumbnailGallery.css';
+import './ThumbnailGallery.scss';
 import Thumbnail from './Thumbnail';
 
 const ThumbnailGrid = ({thumbnails, handleClick}) => {
-    console.log(thumbnails);
     return (
         <div className="gallery-grid">
             {

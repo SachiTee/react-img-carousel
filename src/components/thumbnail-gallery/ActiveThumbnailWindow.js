@@ -1,5 +1,5 @@
 import React from 'react';
-import './ThumbnailGallery.css';
+import './ThumbnailGallery.scss';
 const ActiveThumbnailWindow = ({activeThumbnail}) => {
     return (
         <div className="flexed">

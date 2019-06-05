@@ -1,0 +1,85 @@
+@mixin bp($point) {
+  @if $point == large {
+    @media (max-width: 1200px) { @content; }
+  }
+  @else if $point == regular {
+    @media (max-width: 740px) { @content; }
+  }
+  @else if $point == x-small {
+    @media (max-width: 600px)  { @content; }
+  }
+}
+
+
+.thumbnailGalleryStyles {
+    width: 100%;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+    max-width: 740px;
+    width: 100%;
+    margin: 0 auto;
+    
+    @include bp( x-small ) {
+      grid-template-columns: repeat(1, 1fr);
+    }	  
+    @include bp( regular ) {
+      grid-template-columns: repeat(2, 1fr);
+    }	
+    
+    @include bp( large ) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    img {
+      width: 100%;
+      border: 5px solid rgba(1, 51, 52, 1);
+      border-radius: 3px;
+    }
+}
+  
+/* 
+.thumbnail-container {
+    flex: 1 1 0%;
+} */
+.flexed {
+    flex: 1 1 0%;
+    width: 100%;
+    height: 65%;
+    max-width: 740px;
+    margin: 0 auto;
+    img {
+      border: 5px solid rgba(1, 51, 52, 1);
+      border-radius: 3px;
+    }
+}
+
+/* .gallery-grid {
+    background: yellow;
+    display: flex;
+    width: 100%;
+    height: 35%;
+    margin-top: 40px;
+} */
+
+.thumbnail {
+    cursor: pointer;
+    height: 85%;
+    margin: 20px 10px;
+    width: 85%;
+    position: relative;
+}
+
+
+.imgThumb {
+    width: 100%;
+    height: 100%;
+}
+
+/* media query for growing and shrinking */
+@media (max-width: 600px) {
+  .img {
+    flex: 1 1 100%;
+  }
+}
