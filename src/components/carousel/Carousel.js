@@ -73,38 +73,12 @@ class Carousel extends Component {
             scrollDirection: 'scrollLeft'
         });
     }
-    firstDot = (e) => {
-        const { carouselViewport } = this.refs;
-        var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
-        var newPos = this.positioning();
-        var timeToMoveOneSlide = 200;
-        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
-        scrollTo({
-            element: carouselViewport,
-            to: newPos, 
-            duration: totalTimeToMove, 
-            scrollDirection: 'scrollLeft'
-        });
-    }
-    midDot = (e) => {
-        const { carouselViewport } = this.refs;
-        var numOfSlidesToScroll = 3;
-        var newPos = this.positioning();
-        var timeToMoveOneSlide = 200;
-        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
-        scrollTo({
-            element: carouselViewport,
-            to: newPos, 
-            duration: totalTimeToMove, 
-            scrollDirection: 'scrollLeft'
-        });
-    }
-    positioning() {
+    lastPositioning() {
         const { carouselViewport } = this.refs;
         var numOfSlidesToScroll = 3;
         var widthOfSlide = 412;
         let newPos;
-        if(carouselViewport.scrollLeft === 0) {
+        if (carouselViewport.scrollLeft === 0) {
             newPos = carouselViewport.scrollLeft + (2 * widthOfSlide * numOfSlidesToScroll);
         } else if (carouselViewport.scrollLeft === 1236) {
             newPos = carouselViewport.scrollLeft + (widthOfSlide * numOfSlidesToScroll)
@@ -113,10 +87,38 @@ class Carousel extends Component {
         }
         return newPos;
     }
+    firstDot = (e) => {
+        const { carouselViewport } = this.refs;
+        var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
+        var newPos = 0;
+        var timeToMoveOneSlide = 200;
+        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
+        scrollTo({
+            element: carouselViewport,
+            to: 0, 
+            duration: totalTimeToMove, 
+            scrollDirection: 'scrollLeft'
+        });
+    }
+    midDot = (e) => {
+        const { carouselViewport } = this.refs;
+        var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
+        var newPos = 1236;
+        // var newPos = (carouselViewport.scrollLeft === 0) ? (carouselViewport.scrollLeft + (widthOfSlide * numOfSlidesToScroll)) : (carouselViewport.scrollLeft - (2 * widthOfSlide));
+        var timeToMoveOneSlide = 200;
+        var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
+        scrollTo({
+            element: carouselViewport,
+            to: newPos, 
+            duration: totalTimeToMove, 
+            scrollDirection: 'scrollLeft'
+        });
+    }
+    
     lastDot = (e) => {
         const { carouselViewport } = this.refs;
-        var numOfSlidesToScroll = 3;
-        var newPos = this.positioning();
+        var numOfSlidesToScroll = this.state.numOfSlidesToScroll;
+        var newPos = this.lastPositioning();
         var timeToMoveOneSlide = 200;
         var totalTimeToMove = Math.min( (numOfSlidesToScroll * timeToMoveOneSlide), 400 );
         scrollTo({
@@ -142,33 +144,32 @@ class Carousel extends Component {
     render() {
         return (
             <div>
-            <div className="carousel-container">
-                <button 
-                    className="carousel-nav carousel-left-nav"
-                    onClick={ this.handleLeftNav }
-                    >
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                </button>
-                <div className="carousel-viewport" ref="carouselViewport">
-                    {this.renderSlides()}
+                <div className="carousel-container">
+                    <button 
+                        className="carousel-nav carousel-left-nav"
+                        onClick={ this.handleLeftNav }
+                        >
+                            <FontAwesomeIcon icon={faChevronLeft} />
+                    </button>
+                    <div className="carousel-viewport" ref="carouselViewport">
+                        {this.renderSlides()}
+                    </div>
+                    <button 
+                        className="carousel-nav carousel-right-nav"
+                        onClick={this.handleRightNav}
+                        >
+                        <FontAwesomeIcon icon={faChevronRight} />
+                    </button>
                 </div>
-                <button 
-                    className="carousel-nav carousel-right-nav"
-                    onClick={this.handleRightNav}
-                    >
-                    <FontAwesomeIcon icon={faChevronRight} />
-                </button>
+                <nav className="carousel">
+                    <input id="carousel-item-1" type="radio" name="carousel-dots" />
+                    <label htmlFor="carousel-item-1" onClick={ this.firstDot }>Go to item 1</label>
+                    <input id="carousel-item-2" type="radio" name="carousel-dots" />
+                    <label htmlFor="carousel-item-2" onClick={ this.midDot } >Go to item 2</label>
+                    <input id="carousel-item-3" type="radio" name="carousel-dots" /> 
+                    <label htmlFor="carousel-item-3" onClick={ this.lastDot } >Go to item 3</label>
+                </nav>
             </div>
-            <nav className="carousel">
-                <input id="carousel-item-1" type="radio" name="carousel-dots" checked />
-                <label htmlFor="carousel-item-1" onClick={ this.firstDot }>Go to item 1</label>
-                <input id="carousel-item-2" type="radio" name="carousel-dots" />
-                <label htmlFor="carousel-item-2" onClick={ this.midDot } >Go to item 2</label>
-                <input id="carousel-item-3" type="radio" name="carousel-dots" /> 
-                <label htmlFor="carousel-item-3" onClick={ this.lastDot } >Go to item 3</label>
-            </nav>
-        </div>
-            
         );
     }
 }
